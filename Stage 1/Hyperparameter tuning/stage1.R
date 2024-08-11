@@ -1,8 +1,8 @@
 ################################################################################
 print("Stage 1...")
 ################################################################################
-# File path
-path = 'C:/Users/dmrod/Desktop/ner'
+# Se files path here
+path = #your/path/here
 setwd(path)
 # Setting connection
 print("Setting up connection...")
