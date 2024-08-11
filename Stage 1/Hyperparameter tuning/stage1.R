@@ -6,6 +6,7 @@ path = #your/path/here
 setwd(path)
 # Setting connection
 print("Setting up connection...")
+# In the folder where this will run, create a log folder called 'logs'
 con <- file(paste0(path, "/logs/stage1_hp_log - ", Sys.Date(), ".log"))
 print("Producing sink...")
 sink(con, append=TRUE)
