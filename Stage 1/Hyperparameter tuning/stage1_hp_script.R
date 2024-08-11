@@ -22,7 +22,7 @@ lapply(packages, require, character.only = TRUE, quietly = TRUE)
 print('Starting the data import process...')
 
 # Set paths
-path = 'C:/Users/dmrod/Desktop/ner'
+path = 'your/path/here'
 setwd(path)
 print('Importing COPA Individual file...')
 ind_data <- read.csv('data/copa_ind.csv', header = TRUE, stringsAsFactors = FALSE)
