@@ -1,0 +1,283 @@
+Label,Entity,Type
+ODATE,"2021-11-02,2023-03-31",date
+COVID_POSITIVE_DT,"2020-12-22,2023-09-15",date
+ILL0_HOSPITALIZED_DAYS,"1,30",numeric
+ILL1_HOSPITALIZED_DAYS,"1,60",numeric
+PHQ1,never,text
+PHQ1,sometimes,text
+PHQ1,most days,text
+PHQ1,more than half,text
+PHQ2,never,text
+PHQ2,sometimes,text
+PHQ2,most days,text
+PHQ2,more than half,text
+GAD1,never,text
+GAD1,sometimes,text
+GAD1,most days,text
+GAD1,more than half,text
+GAD2,never,text
+GAD2,sometimes,text
+GAD2,mostdays,text
+GAD2,more than half,text
+SOUGHT_CARE_L7D,yes,text
+SOUGHT_CARE_L7D,no,text
+ILL0_HOSPITALIZED,yes,text
+SOUGHT_CARE_L12MO,yes,text
+SOUGHT_CARE_L12MO,no,text
+ILL0,yes,text
+ILL0,no,text
+ILL0,unk,text
+ILL0_HOSPITALIZED,no,text
+ILL1_HOSPITALIZED,yes,text
+ILL1,yes,text
+ILL1,no,text
+ILL1,unk,text
+ILL1_HOSPITALIZED,no,text
+COVID_POSITIVE,yes,text
+COVID_POSITIVE,no,text
+COVID_POSITIVE,unk,text
+RENT_OWN_OTH,,free text field
+PREGNANCY_WEEKS,"1,42",numeric
+INCOME,"0,100000",numeric
+INCOME_MONTHS,"0,5000",numeric
+COMMUNITY_YEARS,"0,100",numeric
+HM8_AGE,"0,100",numeric
+HM7_AGE,"0,100",numeric
+HM6_AGE,"0,100",numeric
+HM5_AGE,"0,100",numeric
+HM4_AGE,"0,100",numeric
+HM3_AGE,"0,100",numeric
+HM2_AGE,"0,100",numeric
+HM1_AGE,"0,100",numeric
+HM9_AGE,"0,100",numeric
+NOP,"1,9",numeric
+HISPANIC_LATINO,yes,text
+HISPANIC_LATINO,no,text
+HISPANIC_LATINO,unk,text
+INSURANCE,yes,text
+INSURANCE,no,text
+INSURANCE,unk,text
+EDUCATION,grades 6 to 8,text
+EDUCATION,spec ed,text
+EDUCATION,completed grade 12 ged,text
+EDUCATION,bach degree,text
+EDUCATION,grades 1 to 5,text
+EDUCATION,tech assoc degree,text
+EDUCATION,grades 9 to 11,text
+EDUCATION,prof degree,text
+EDUCATION,post grad study,text
+EDUCATION,no school,text
+EMPLOYMENT,studying working,text
+EMPLOYMENT,studying,text
+EMPLOYMENT,unemployed,text
+EMPLOYMENT,employed pt,text
+EMPLOYMENT,informal work,text
+EMPLOYMENT,homemaker,text
+EMPLOYMENT,health cond disability,text
+EMPLOYMENT,retired,text
+EMPLOYMENT,self emp,text
+EMPLOYMENT,employed ft,text
+EMPLOYMENT,other,text
+PREGNANT,yes,text
+PREGNANT,no,text
+PREGNANT,unk,text
+CHILD_UNDER18,yes,text
+CHILD_UNDER18,no,text
+RENT_OWN,relatives home,text
+RENT_OWN,owner,text
+RENT_OWN,renter,text
+RENT_OWN,public housing,text
+RENT_OWN,other,text
+INCOME_OTHER,prefer month,text
+SEX,female,text
+SEX,male,text
+AGE_GROUP,1 to 4,text
+AGE_GROUP,5 to 9,text
+AGE_GROUP,10 to 14,text
+AGE_GROUP,15 to 19,text
+AGE_GROUP,20 to 24,text
+AGE_GROUP,25 to 29,text
+AGE_GROUP,30 to 34,text
+AGE_GROUP,35 to 39,text
+AGE_GROUP,40 to 44,text
+AGE_GROUP,45 to 49,text
+AGE_GROUP,50,text
+HM8_PRESENT,yes,text
+HM8_PRESENT,no,text
+HM8_PARTICIPATE,yes,text
+HM8_PARTICIPATE,no,text
+HM8_PARTICIPATE,not eligible,text
+HM8_PARTICIPATE,unk,text
+HM8_SEX,male,text
+HM8_SEX,female,text
+HM7_PRESENT,yes,text
+HM7_PRESENT,no,text
+HM7_PARTICIPATE,yes,text
+HM7_PARTICIPATE,no,text
+HM7_PARTICIPATE,not eligible,text
+HM7_PARTICIPATE,unk,text
+HM7_SEX,male,text
+HM7_SEX,female,text
+HM6_PRESENT,yes,text
+HM6_PRESENT,no,text
+HM6_PARTICIPATE,yes,text
+HM6_PARTICIPATE,no,text
+HM6_PARTICIPATE,not eligible,text
+HM6_PARTICIPATE,unk,text
+HM6_SEX,male,text
+HM6_SEX,female,text
+HM5_PRESENT,yes,text
+HM5_PRESENT,no,text
+HM5_PARTICIPATE,yes,text
+HM5_PARTICIPATE,no,text
+HM5_PARTICIPATE,not eligible,text
+HM5_PARTICIPATE,unk,text
+HM5_SEX,male,text
+HM5_SEX,female,text
+HM4_PRESENT,yes,text
+HM4_PRESENT,no,text
+HM4_PARTICIPATE,yes,text
+HM4_PARTICIPATE,no,text
+HM4_PARTICIPATE,not eligible,text
+HM4_PARTICIPATE,unk,text
+HM4_SEX,male,text
+HM4_SEX,female,text
+HM3_PRESENT,yes,text
+HM3_PRESENT,no,text
+HM3_PARTICIPATE,yes,text
+HM3_PARTICIPATE,no,text
+HM3_PARTICIPATE,not eligible,text
+HM3_PARTICIPATE,unk,text
+HM3_SEX,male,text
+HM3_SEX,female,text
+HM2_PRESENT,yes,text
+HM2_PRESENT,no,text
+HM2_PARTICIPATE,yes,text
+HM2_PARTICIPATE,no,text
+HM2_PARTICIPATE,not eligible,text
+HM2_PARTICIPATE,unk,text
+HM2_SEX,male,text
+HM2_SEX,female,text
+HM1_PRESENT,yes,text
+HM1_PRESENT,no,text
+HM1_PARTICIPATE,yes,text
+HM1_PARTICIPATE,no,text
+HM1_PARTICIPATE,not eligible,text
+HM1_PARTICIPATE,unk,text
+HM1_SEX,male,text
+HM1_SEX,female,text
+HM9_PRESENT,yes,text
+HM9_PRESENT,no,text
+HM9_PARTICIPATE,yes,text
+HM9_PARTICIPATE,no,text
+HM9_PARTICIPATE,unk,text
+HM9_SEX,male,text
+HM9_SEX,female,text
+OTHER_INSECTICIDE_SPEC,,free text field
+EXTERMINATOR_12MO_COST,"0,10000",numeric
+INSECTICIDE_6MO_COST,"0,10000",numeric
+VAX_FLU,yes,text
+VAX_FLU,no,text
+VAX_FLU,unk,text
+COVID_VAX_DOSES,1 dose,text
+COVID_VAX_DOSES,2 doses,text
+COVID_VAX_DOSES,3 doses,text
+COVID_VAX,yes,text
+COVID_VAX,no,text
+COVID_VAX_DOSES,4 doses,text
+COVID_VAX_DOSES,unk,text
+VAX_DENV_CHILDREN,yes,text
+VAX_DENV_CHILDREN,no,text
+VAX_DENV_CHILDREN,unk,text
+VAX_DENV_FREE,yes,text
+VAX_DENV_FREE,no,text
+VAX_DENV_FREE,unk,text
+VAX_DENV_WOULD_VAX,yes,text
+VAX_DENV_WOULD_VAX,no,text
+VAX_DENV_WOULD_VAX,unk,text
+SCREENS_WINDOWS,all,text
+SCREENS_WINDOWS,some,text
+SCREENS_WINDOWS,all that open,text
+SCREENS_WINDOWS,none,text
+SCREENS_DOORS,all,text
+SCREENS_DOORS,some,text
+SCREENS_DOORS,all that open,text
+SCREENS_DOORS,none,text
+AC,yes,text
+AC,no,text
+EXTERMINATOR_12MO,never,text
+EXTERMINATOR_12MO,1 time,text
+EXTERMINATOR_12MO,2 times,text
+EXTERMINATOR_12MO,3 times,text
+EXTERMINATOR_12MO,4 or more times,text
+EXTERMINATOR_12MO,unk,text
+AWAY_MONDAY,"0,24",numeric
+AWAY_TUESDAY,"0,24",numeric
+AWAY_WEDNESDAY,"0,24",numeric
+AWAY_THURSDAY,"0,24",numeric
+AWAY_FRIDAY,"0,24",numeric
+AWAY_SATURDAY,"0,24",numeric
+AWAY_SUNDAY,"0,24",numeric
+EMPLOYMENT_LOCATION,inside,text
+EMPLOYMENT_LOCATION,outside,text
+EMPLOYMENT_LOCATION,both,text
+STUDY_LOCATION,inside,text
+STUDY_LOCATION,both,text
+STUDY_LOCATION,outside,text
+EMPLOYMENT_INSIDE_SCREEN,none,text
+EMPLOYMENT_INSIDE_SCREEN,all,text
+EMPLOYMENT_INSIDE_SCREEN,unk,text
+EMPLOYMENT_INSIDE_SCREEN,some,text
+EMPLOYMENT_INSIDE_SCREEN,all that open,text
+EMPLOYMENT_INSIDE_AC,always,text
+EMPLOYMENT_INSIDE_AC,never,text
+EMPLOYMENT_INSIDE_AC,sometimes,text
+STUDY_INSIDE_SCREEN,none,text
+STUDY_INSIDE_SCREEN,unk,text
+STUDY_INSIDE_SCREEN,some,text
+STUDY_INSIDE_SCREEN,all,text
+STUDY_INSIDE_SCREEN,all that open,text
+STUDY_INSIDE_AC,always,text
+STUDY_INSIDE_AC,never,text
+STUDY_INSIDE_AC,sometimes,text
+HM9_PARTICIPATE,not eligible,text
+RATS,yes,text
+RATS,no,text
+RATS,unk,text
+CISTERN,yes,text
+CISTERN,no,text
+CISTERN,unk,text
+SEPTIC,yes,text
+SEPTIC,no,text
+SEPTIC,unk,text
+VAX_DENV_RECOMMENDED,yes,text
+VAX_DENV_RECOMMENDED,no,text
+COVID19_RISK_CHILDREN,low,text
+COVID19_RISK_CHILDREN,high,text
+COVID19_RISK_CHILDREN,none,text
+COVID19_RISK_CHILDREN,none_dx,text
+COVID19_RISK_CHILDREN,none_vax,text
+HX_DENV,yes,text
+HX_DENV,no,text
+HX_DENV,unk,text
+HX_DENV_KNOWN,yes,text
+HX_DENV_KNOWN,no,text
+HX_DENV_KNOWN,unk,text
+DENGUE_DEATH,yes,text
+DENGUE_DEATH,no,text
+DENGUE_DEATH,unk,text
+BITE_FREQUENCY,daily,text
+BITE_FREQUENCY,sometimes,text
+BITE_FREQUENCY,rarely,text
+BITE_FREQUENCY,never,text
+DENV_RISK,low,text
+DENV_RISK,high,text
+DENV_RISK,nr,text
+DENV_RISK,none,text
+DENV_RISK,none dx,text
+WORRY_COVID19,yes,text
+WORRY_COVID19,no,text
+WORRY_COVID19,unk,text
+COVID19_RISK,low,text
+COVID19_RISK,high,text
+COVID19_RISK,none,text

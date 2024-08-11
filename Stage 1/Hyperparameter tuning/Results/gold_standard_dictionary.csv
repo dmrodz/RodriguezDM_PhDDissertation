@@ -1,0 +1,283 @@
+Class,ClassID,Label,Entity,Form,Type,TEXT_RULES_VAR,TEXT_RULES_VAL
+Clinical History (CH),CH,ODATE,"2021-11-02,2023-03-31",ind,date,ILL0,yes
+Clinical History (CH),CH,COVID_POSITIVE_DT,"2020-12-22,2023-09-15",ind,date,COVID_POSITIVE,yes
+Clinical History (CH),CH,ILL0_HOSPITALIZED_DAYS,"1,30",ind,numeric,ILL0_HOSPITALIZED,yes
+Clinical History (CH),CH,ILL1_HOSPITALIZED_DAYS,"1,60",ind,numeric,ILL1_HOSPITALIZED,yes
+Clinical History (CH),CH,PHQ1,never,kap,text,NA,NA
+Clinical History (CH),CH,PHQ1,sometimes,kap,text,NA,NA
+Clinical History (CH),CH,PHQ1,most days,kap,text,NA,NA
+Clinical History (CH),CH,PHQ1,more than half,kap,text,NA,NA
+Clinical History (CH),CH,PHQ2,never,kap,text,NA,NA
+Clinical History (CH),CH,PHQ2,sometimes,kap,text,NA,NA
+Clinical History (CH),CH,PHQ2,most days,kap,text,NA,NA
+Clinical History (CH),CH,PHQ2,more than half,kap,text,NA,NA
+Clinical History (CH),CH,GAD1,never,kap,text,NA,NA
+Clinical History (CH),CH,GAD1,sometimes,kap,text,NA,NA
+Clinical History (CH),CH,GAD1,most days,kap,text,NA,NA
+Clinical History (CH),CH,GAD1,more than half,kap,text,NA,NA
+Clinical History (CH),CH,GAD2,never,kap,text,NA,NA
+Clinical History (CH),CH,GAD2,sometimes,kap,text,NA,NA
+Clinical History (CH),CH,GAD2,mostdays,kap,text,NA,NA
+Clinical History (CH),CH,GAD2,more than half,kap,text,NA,NA
+Clinical History (CH),CH,SOUGHT_CARE_L7D,yes,ind,text,ILL0,yes
+Clinical History (CH),CH,SOUGHT_CARE_L7D,no,ind,text,ILL0,yes
+Clinical History (CH),CH,ILL0_HOSPITALIZED,yes,ind,text,ILL0,yes
+Clinical History (CH),CH,SOUGHT_CARE_L12MO,yes,ind,text,ILL1,yes
+Clinical History (CH),CH,SOUGHT_CARE_L12MO,no,ind,text,ILL1,yes
+Clinical History (CH),CH,ILL0,yes,ind,text,NA,NA
+Clinical History (CH),CH,ILL0,no,ind,text,NA,NA
+Clinical History (CH),CH,ILL0,unk,ind,text,NA,NA
+Clinical History (CH),CH,ILL0_HOSPITALIZED,no,ind,text,ILL0,yes
+Clinical History (CH),CH,ILL1_HOSPITALIZED,yes,ind,text,ILL1,yes
+Clinical History (CH),CH,ILL1,yes,ind,text,NA,NA
+Clinical History (CH),CH,ILL1,no,ind,text,NA,NA
+Clinical History (CH),CH,ILL1,unk,ind,text,NA,NA
+Clinical History (CH),CH,ILL1_HOSPITALIZED,no,ind,text,ILL1,yes
+Clinical History (CH),CH,COVID_POSITIVE,yes,ind,text,NA,NA
+Clinical History (CH),CH,COVID_POSITIVE,no,ind,text,NA,NA
+Clinical History (CH),CH,COVID_POSITIVE,unk,ind,text,NA,NA
+Disparity Indicators (DI),DI,RENT_OWN_OTH,,hr,free text field,RENT_OWN,other
+Disparity Indicators (DI),DI,PREGNANCY_WEEKS,"1,42",ind,numeric,PREGNANT,yes
+Disparity Indicators (DI),DI,INCOME,"0,100000",hr,numeric,INCOME_OTHER,prefer month
+Disparity Indicators (DI),DI,INCOME_MONTHS,"0,5000",hr,numeric,INCOME_OTHER,prefer month
+Disparity Indicators (DI),DI,COMMUNITY_YEARS,"0,100",ind,numeric,NA,NA
+Disparity Indicators (DI),DI,HM8_AGE,"0,100",hr,numeric,NOP,"8,9"
+Disparity Indicators (DI),DI,HM7_AGE,"0,100",hr,numeric,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM6_AGE,"0,100",hr,numeric,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM5_AGE,"0,100",hr,numeric,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_AGE,"0,100",hr,numeric,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_AGE,"0,100",hr,numeric,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_AGE,"0,100",hr,numeric,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_AGE,"0,100",hr,numeric,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM9_AGE,"0,100",hr,numeric,NOP,9
+Disparity Indicators (DI),DI,NOP,"1,9",hr,numeric,NA,NA
+Disparity Indicators (DI),DI,HISPANIC_LATINO,yes,ind,text,NA,NA
+Disparity Indicators (DI),DI,HISPANIC_LATINO,no,ind,text,NA,NA
+Disparity Indicators (DI),DI,HISPANIC_LATINO,unk,ind,text,NA,NA
+Disparity Indicators (DI),DI,INSURANCE,yes,ind,text,NA,NA
+Disparity Indicators (DI),DI,INSURANCE,no,ind,text,NA,NA
+Disparity Indicators (DI),DI,INSURANCE,unk,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,grades 6 to 8,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,spec ed,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,completed grade 12 ged,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,bach degree,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,grades 1 to 5,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,tech assoc degree,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,grades 9 to 11,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,prof degree,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,post grad study,ind,text,NA,NA
+Disparity Indicators (DI),DI,EDUCATION,no school,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,studying working,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,studying,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,unemployed,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,employed pt,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,informal work,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,homemaker,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,health cond disability,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,retired,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,self emp,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,employed ft,ind,text,NA,NA
+Disparity Indicators (DI),DI,EMPLOYMENT,other,ind,text,NA,NA
+Disparity Indicators (DI),DI,PREGNANT,yes,ind,text,SEX,female
+Disparity Indicators (DI),DI,PREGNANT,no,ind,text,SEX,female
+Disparity Indicators (DI),DI,PREGNANT,unk,ind,text,SEX,female
+Disparity Indicators (DI),DI,CHILD_UNDER18,yes,kap,text,AGE_GROUP,"15 to 19,20 to 24,25 to 29,30 to 34,35 to 39,40 to 44,50"
+Disparity Indicators (DI),DI,CHILD_UNDER18,no,kap,text,AGE_GROUP,"15 to 19,20 to 24,25 to 29,30 to 34,35 to 39,40 to 44,50"
+Disparity Indicators (DI),DI,RENT_OWN,relatives home,hr,text,NA,NA
+Disparity Indicators (DI),DI,RENT_OWN,owner,hr,text,NA,NA
+Disparity Indicators (DI),DI,RENT_OWN,renter,hr,text,NA,NA
+Disparity Indicators (DI),DI,RENT_OWN,public housing,hr,text,NA,NA
+Disparity Indicators (DI),DI,RENT_OWN,other,hr,text,NA,NA
+Disparity Indicators (DI),DI,INCOME_OTHER,prefer month,hr,text,NA,NA
+Disparity Indicators (DI),DI,SEX,female,ind,text,NA,NA
+Disparity Indicators (DI),DI,SEX,male,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,1 to 4,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,5 to 9,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,10 to 14,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,15 to 19,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,20 to 24,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,25 to 29,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,30 to 34,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,35 to 39,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,40 to 44,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,45 to 49,ind,text,NA,NA
+Disparity Indicators (DI),DI,AGE_GROUP,50,ind,text,NA,NA
+Disparity Indicators (DI),DI,HM8_PRESENT,yes,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM8_PRESENT,no,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM8_PARTICIPATE,yes,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM8_PARTICIPATE,no,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM8_PARTICIPATE,not eligible,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM8_PARTICIPATE,unk,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM8_SEX,male,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM8_SEX,female,hr,text,NOP,"8,9"
+Disparity Indicators (DI),DI,HM7_PRESENT,yes,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM7_PRESENT,no,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM7_PARTICIPATE,yes,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM7_PARTICIPATE,no,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM7_PARTICIPATE,not eligible,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM7_PARTICIPATE,unk,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM7_SEX,male,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM7_SEX,female,hr,text,NOP,"7,8,9"
+Disparity Indicators (DI),DI,HM6_PRESENT,yes,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM6_PRESENT,no,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM6_PARTICIPATE,yes,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM6_PARTICIPATE,no,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM6_PARTICIPATE,not eligible,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM6_PARTICIPATE,unk,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM6_SEX,male,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM6_SEX,female,hr,text,NOP,"6,7,8,9"
+Disparity Indicators (DI),DI,HM5_PRESENT,yes,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM5_PRESENT,no,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM5_PARTICIPATE,yes,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM5_PARTICIPATE,no,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM5_PARTICIPATE,not eligible,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM5_PARTICIPATE,unk,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM5_SEX,male,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM5_SEX,female,hr,text,NOP,"5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_PRESENT,yes,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_PRESENT,no,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_PARTICIPATE,yes,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_PARTICIPATE,no,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_PARTICIPATE,not eligible,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_PARTICIPATE,unk,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_SEX,male,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM4_SEX,female,hr,text,NOP,"4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_PRESENT,yes,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_PRESENT,no,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_PARTICIPATE,yes,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_PARTICIPATE,no,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_PARTICIPATE,not eligible,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_PARTICIPATE,unk,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_SEX,male,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM3_SEX,female,hr,text,NOP,"3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_PRESENT,yes,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_PRESENT,no,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_PARTICIPATE,yes,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_PARTICIPATE,no,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_PARTICIPATE,not eligible,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_PARTICIPATE,unk,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_SEX,male,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM2_SEX,female,hr,text,NOP,"2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_PRESENT,yes,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_PRESENT,no,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_PARTICIPATE,yes,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_PARTICIPATE,no,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_PARTICIPATE,not eligible,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_PARTICIPATE,unk,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_SEX,male,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM1_SEX,female,hr,text,NOP,"1,2,3,4,5,6,7,8,9"
+Disparity Indicators (DI),DI,HM9_PRESENT,yes,hr,text,NOP,9
+Disparity Indicators (DI),DI,HM9_PRESENT,no,hr,text,NOP,9
+Disparity Indicators (DI),DI,HM9_PARTICIPATE,yes,hr,text,NOP,9
+Disparity Indicators (DI),DI,HM9_PARTICIPATE,no,hr,text,NOP,9
+Disparity Indicators (DI),DI,HM9_PARTICIPATE,unk,hr,text,NOP,9
+Disparity Indicators (DI),DI,HM9_SEX,male,hr,text,NOP,9
+Disparity Indicators (DI),DI,HM9_SEX,female,hr,text,NOP,9
+Preventive Behaviors (PB),PB,OTHER_INSECTICIDE_SPEC,,hr,free text field,NA,NA
+Preventive Behaviors (PB),PB,EXTERMINATOR_12MO_COST,"0,10000",hr,numeric,EXTERMINATOR_12MO,"1 time,2 times,3times,4 or more times"
+Preventive Behaviors (PB),PB,INSECTICIDE_6MO_COST,"0,10000",hr,numeric,OTHER_INSECTICIDE_SPEC,<not NA>
+Preventive Behaviors (PB),PB,VAX_FLU,yes,ind,text,NA,NA
+Preventive Behaviors (PB),PB,VAX_FLU,no,ind,text,NA,NA
+Preventive Behaviors (PB),PB,VAX_FLU,unk,ind,text,NA,NA
+Preventive Behaviors (PB),PB,COVID_VAX_DOSES,1 dose,ind,text,COVID_VAX,yes
+Preventive Behaviors (PB),PB,COVID_VAX_DOSES,2 doses,ind,text,COVID_VAX,yes
+Preventive Behaviors (PB),PB,COVID_VAX_DOSES,3 doses,ind,text,COVID_VAX,yes
+Preventive Behaviors (PB),PB,COVID_VAX,yes,ind,text,NA,NA
+Preventive Behaviors (PB),PB,COVID_VAX,no,ind,text,NA,NA
+Preventive Behaviors (PB),PB,COVID_VAX_DOSES,4 doses,ind,text,COVID_VAX,yes
+Preventive Behaviors (PB),PB,COVID_VAX_DOSES,unk,ind,text,COVID_VAX,yes
+Preventive Behaviors (PB),PB,VAX_DENV_CHILDREN,yes,kap,text,CHILD_UNDER18,yes
+Preventive Behaviors (PB),PB,VAX_DENV_CHILDREN,no,kap,text,CHILD_UNDER18,yes
+Preventive Behaviors (PB),PB,VAX_DENV_CHILDREN,unk,kap,text,CHILD_UNDER18,yes
+Preventive Behaviors (PB),PB,VAX_DENV_FREE,yes,kap,text,NA,NA
+Preventive Behaviors (PB),PB,VAX_DENV_FREE,no,kap,text,NA,NA
+Preventive Behaviors (PB),PB,VAX_DENV_FREE,unk,kap,text,NA,NA
+Preventive Behaviors (PB),PB,VAX_DENV_WOULD_VAX,yes,kap,text,NA,NA
+Preventive Behaviors (PB),PB,VAX_DENV_WOULD_VAX,no,kap,text,NA,NA
+Preventive Behaviors (PB),PB,VAX_DENV_WOULD_VAX,unk,kap,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_WINDOWS,all,hr,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_WINDOWS,some,hr,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_WINDOWS,all that open,hr,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_WINDOWS,none,hr,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_DOORS,all,hr,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_DOORS,some,hr,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_DOORS,all that open,hr,text,NA,NA
+Preventive Behaviors (PB),PB,SCREENS_DOORS,none,hr,text,NA,NA
+Preventive Behaviors (PB),PB,AC,yes,hr,text,NA,NA
+Preventive Behaviors (PB),PB,AC,no,hr,text,NA,NA
+Preventive Behaviors (PB),PB,EXTERMINATOR_12MO,never,hr,text,NA,NA
+Preventive Behaviors (PB),PB,EXTERMINATOR_12MO,1 time,hr,text,NA,NA
+Preventive Behaviors (PB),PB,EXTERMINATOR_12MO,2 times,hr,text,NA,NA
+Preventive Behaviors (PB),PB,EXTERMINATOR_12MO,3 times,hr,text,NA,NA
+Preventive Behaviors (PB),PB,EXTERMINATOR_12MO,4 or more times,hr,text,NA,NA
+Preventive Behaviors (PB),PB,EXTERMINATOR_12MO,unk,hr,text,NA,NA
+Risk Indicator (RI),RI,AWAY_MONDAY,"0,24",ind,numeric,NA,NA
+Risk Indicator (RI),RI,AWAY_TUESDAY,"0,24",ind,numeric,NA,NA
+Risk Indicator (RI),RI,AWAY_WEDNESDAY,"0,24",ind,numeric,NA,NA
+Risk Indicator (RI),RI,AWAY_THURSDAY,"0,24",ind,numeric,NA,NA
+Risk Indicator (RI),RI,AWAY_FRIDAY,"0,24",ind,numeric,NA,NA
+Risk Indicator (RI),RI,AWAY_SATURDAY,"0,24",ind,numeric,NA,NA
+Risk Indicator (RI),RI,AWAY_SUNDAY,"0,24",ind,numeric,NA,NA
+Risk Indicator (RI),RI,EMPLOYMENT_LOCATION,inside,ind,text,EMPLOYMENT,"employed ft,employed pt,self emp,studying working,informal work"
+Risk Indicator (RI),RI,EMPLOYMENT_LOCATION,outside,ind,text,EMPLOYMENT,"employed ft,employed pt,self emp,studying working,informal work"
+Risk Indicator (RI),RI,EMPLOYMENT_LOCATION,both,ind,text,EMPLOYMENT,"employed ft,employed pt,self emp,studying working,informal work"
+Risk Indicator (RI),RI,STUDY_LOCATION,inside,ind,text,EMPLOYMENT,"studying working,studying"
+Risk Indicator (RI),RI,STUDY_LOCATION,both,ind,text,EMPLOYMENT,"studying working,studying"
+Risk Indicator (RI),RI,STUDY_LOCATION,outside,ind,text,EMPLOYMENT,"studying working,studying"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_SCREEN,none,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_SCREEN,all,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_SCREEN,unk,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_SCREEN,some,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_SCREEN,all that open,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_AC,always,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_AC,never,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,EMPLOYMENT_INSIDE_AC,sometimes,ind,text,EMPLOYMENT_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_SCREEN,none,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_SCREEN,unk,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_SCREEN,some,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_SCREEN,all,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_SCREEN,all that open,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_AC,always,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_AC,never,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,STUDY_INSIDE_AC,sometimes,ind,text,STUDY_LOCATION,"inside,both"
+Risk Indicator (RI),RI,HM9_PARTICIPATE,not eligible,hr,text,NOP,9
+Risk Indicator (RI),RI,RATS,yes,hr,text,NA,NA
+Risk Indicator (RI),RI,RATS,no,hr,text,NA,NA
+Risk Indicator (RI),RI,RATS,unk,hr,text,NA,NA
+Risk Indicator (RI),RI,CISTERN,yes,hr,text,NA,NA
+Risk Indicator (RI),RI,CISTERN,no,hr,text,NA,NA
+Risk Indicator (RI),RI,CISTERN,unk,hr,text,NA,NA
+Risk Indicator (RI),RI,SEPTIC,yes,hr,text,NA,NA
+Risk Indicator (RI),RI,SEPTIC,no,hr,text,NA,NA
+Risk Indicator (RI),RI,SEPTIC,unk,hr,text,NA,NA
+Risk Indicator (RI),RI,VAX_DENV_RECOMMENDED,yes,kap,text,NA,NA
+Risk Indicator (RI),RI,VAX_DENV_RECOMMENDED,no,kap,text,NA,NA
+Risk Perception (RP),RP,COVID19_RISK_CHILDREN,low,kap,text,CHILD_UNDER18,yes
+Risk Perception (RP),RP,COVID19_RISK_CHILDREN,high,kap,text,CHILD_UNDER18,yes
+Risk Perception (RP),RP,COVID19_RISK_CHILDREN,none,kap,text,CHILD_UNDER18,yes
+Risk Perception (RP),RP,COVID19_RISK_CHILDREN,none_dx,kap,text,CHILD_UNDER18,yes
+Risk Perception (RP),RP,COVID19_RISK_CHILDREN,none_vax,kap,text,CHILD_UNDER18,yes
+Risk Perception (RP),RP,HX_DENV,yes,kap,text,NA,NA
+Risk Perception (RP),RP,HX_DENV,no,kap,text,NA,NA
+Risk Perception (RP),RP,HX_DENV,unk,kap,text,NA,NA
+Risk Perception (RP),RP,HX_DENV_KNOWN,yes,kap,text,NA,NA
+Risk Perception (RP),RP,HX_DENV_KNOWN,no,kap,text,NA,NA
+Risk Perception (RP),RP,HX_DENV_KNOWN,unk,kap,text,NA,NA
+Risk Perception (RP),RP,DENGUE_DEATH,yes,kap,text,NA,NA
+Risk Perception (RP),RP,DENGUE_DEATH,no,kap,text,NA,NA
+Risk Perception (RP),RP,DENGUE_DEATH,unk,kap,text,NA,NA
+Risk Perception (RP),RP,BITE_FREQUENCY,daily,kap,text,NA,NA
+Risk Perception (RP),RP,BITE_FREQUENCY,sometimes,kap,text,NA,NA
+Risk Perception (RP),RP,BITE_FREQUENCY,rarely,kap,text,NA,NA
+Risk Perception (RP),RP,BITE_FREQUENCY,never,kap,text,NA,NA
+Risk Perception (RP),RP,DENV_RISK,low,kap,text,NA,NA
+Risk Perception (RP),RP,DENV_RISK,high,kap,text,NA,NA
+Risk Perception (RP),RP,DENV_RISK,nr,kap,text,NA,NA
+Risk Perception (RP),RP,DENV_RISK,none,kap,text,NA,NA
+Risk Perception (RP),RP,DENV_RISK,none dx,kap,text,NA,NA
+Risk Perception (RP),RP,WORRY_COVID19,yes,kap,text,NA,NA
+Risk Perception (RP),RP,WORRY_COVID19,no,kap,text,NA,NA
+Risk Perception (RP),RP,WORRY_COVID19,unk,kap,text,NA,NA
+Risk Perception (RP),RP,COVID19_RISK,low,kap,text,NA,NA
+Risk Perception (RP),RP,COVID19_RISK,high,kap,text,NA,NA
+Risk Perception (RP),RP,COVID19_RISK,none,kap,text,NA,NA
