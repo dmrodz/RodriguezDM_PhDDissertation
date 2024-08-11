@@ -1,3 +1,4 @@
+## This code will be sourced by stage1.R
 ################################################################################
 print('Hypertuning an aggregated dataset composed of 5 randomly selected datasets.')
 ################################################################################
@@ -46,19 +47,14 @@ gold_standard_dictionary <- read.csv('gold_standard_dictionary.csv',
   )
  
 ################################################################################
+# If you'd like to recreate the synthetic datasets, un-comment this code.
 # print('Generate synthetic datasets and store in front-end memory...')
 # source('synthetic_data_generation.R')
 # full_file_names <- c(paste0(getwd(), '/data/synthetic_data', 1:20, '.csv'))
 # file_names <- c(paste0('synthetic_data', 1:20, '.csv'))
 # synth_files <- lapply(full_file_names, read.csv, header = TRUE,
 #                       stringsAsFactors = FALSE)
-
-full_file_names <- c(paste0(getwd(), '/synthetic_test_dataset_', 1:4, '.csv'))
-file_names <- c(paste0('synthetic_test_dataset_', 1:4, '.csv'))
-synth_files <- lapply(full_file_names, read.csv, header = TRUE,
-                      stringsAsFactors = FALSE)
-
-
+#
 # print('Randomly select 4 synthetic datasets for testing...')
 # set.seed(12345)
 # selected_datasets_testing <- sample(synth_files, 4)
@@ -68,11 +64,17 @@ synth_files <- lapply(full_file_names, read.csv, header = TRUE,
 #   cat(sprintf("Dataset %d saved as '%s'\n", i, filename))
 # }
 # write.csv(merged_data, paste0(getwd(), '/merged_raw_data.csv'), row.names = FALSE)
-################################################################################
 
+# Importing synthetic datasets for later testing...
+full_file_names <- c(paste0(getwd(), '/synthetic_test_dataset_', 1:4, '.csv'))
+file_names <- c(paste0('synthetic_test_dataset_', 1:4, '.csv'))
+synth_files <- lapply(full_file_names, read.csv, header = TRUE,
+                      stringsAsFactors = FALSE)
+################################################################################
 set.seed(56789)
 rawdata_list <- c(list(merged_data), synth_files)
 ## LOOP STARTS HERE FOR EACH DATASET
+## Four code files will be sourced for the CRF and Bi-LSTM models, for each layer
 for(ii in 1) {
 
 source('data_preparation.R')
