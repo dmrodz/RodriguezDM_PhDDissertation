@@ -1,6 +1,6 @@
 library(tidyverse)
 library(xlsx)
-path = 'C:/Users/dmrod/Desktop/ner'
+path = 'your/path/here'
 setwd(path)
 print('Importing Gold Standard dictionary...')
 gold_standard <- read.csv('gold_standard_dictionary.csv',
