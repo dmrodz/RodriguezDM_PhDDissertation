@@ -189,3 +189,39 @@ for (i in 1:5) {
 
 saveWorkbook(wb, "Stage 1 Results.xlsx")
 
+## F1 Scores Dataset 1
+# These were entered manually
+f1_scores_modelnDK <- c(90.35, 87.29, 96.57, 86.34, 87.25, 80.18)  
+f1_scores_modeliDK <- c(92.22, 87.49, 97.94, 82.45, 99.77, 82.24)  
+
+# Paired t-test
+t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
+
+## F1 Scores Dataset 2
+f1_scores_modelnDK <- c(57.82, 0.00, 97.22, 0.00, 0.00, 0.00)  
+f1_scores_modeliDK <- c(95.36, 97.25, 90.87, 98.85, 99.96, 97.12)  
+
+# Paired t-test
+t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
+
+## F1 Scores Dataset 3
+f1_scores_modelnDK <- c(51.93, 0.00, 56.96, 96.27, 0.00, 0.00)  
+f1_scores_modeliDK <- c(99.40, 98.98, 99.41, 98.90, 100.00, 100.00)  
+
+# Paired t-test
+t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
+
+## F1 Scores Dataset 4
+f1_scores_modelnDK <- c(78.25, 60.91, 97.21, 64.13, 52.02, 56.44)  
+f1_scores_modeliDK <- c(98.26, 98.09, 99.95, 93.40, 98.81, 99.17)  
+
+# Paired t-test
+t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
+
+## F1 Scores Dataset 5
+f1_scores_modelnDK <- c(67.72304765, 0.311486048, 97.25683011, 64.39081813,
+                        0.015578751, 25.37097833)
+f1_scores_modeliDK <- c(99.18783934, 98.25858181, 99.99566903, 98.86767423,
+                        97.1166348, 100)  
+# Paired t-test
+t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
