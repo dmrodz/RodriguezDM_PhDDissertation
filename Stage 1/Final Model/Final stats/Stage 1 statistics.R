@@ -49,179 +49,303 @@ metrics_edk5 <-  read.csv(paste0(getwd(), '/crf_all_results_edk - data 5.csv'),
 
 
 metrics_comparison <- function(metrics_layer_ed, metrics_layer_edk) {
-    df <- data.frame(
-      Measure = c("TP", "FP", "FN", "TN"),
-      ModelED = c(sum(metrics_layer_ed$TP==1), sum(metrics_layer_ed$FP==1), 
-                 sum(metrics_layer_ed$FN==1), sum(metrics_layer_ed$TN==1)),
-      ModelEDK = c(sum(metrics_layer_edk$TP==1), sum(metrics_layer_edk$FP==1), 
-                 sum(metrics_layer_edk$FN==1), sum(metrics_layer_edk$TN==1))
-      )
-    
-    ## Accuracy
+  m_ed1=metrics_layer_ed
+  m_edk1=metrics_layer_edk
+
+  m_ed = select(m_ed1, Class, TP, TN, FP, FN)
+  m_edk = select(m_edk1, TP, TN, FP, FN)
+  colnames(m_edk) <- c('TPk', 'TNk', 'FPk', 'FNk')
+  
+  merge = cbind(m_ed, m_edk)
+  
+  class_contingency <- merge %>%
+    group_by(Class) %>%
+    summarise(.groups = 'drop',
+              # For Accuracy
+              both_correct = sum((TN == 1 & TNk == 1) | 
+                                 (TP == 1 & TPk == 1)),
+              # Model 1 correct, Model 2 incorrect
+              ed_correct_edk_incorrect = sum((TN == 1 & TNk == 0) | 
+                                             (TP == 1 & TPk == 0)),
+              
+              # Model 1 incorrect, Model 2 correct
+              ed_incorrect_edk_correct = sum((TN == 0 & TNk == 1) | 
+                                             (TP == 0 & TPk == 1)),
+              
+              # Both models incorrect (either FP or FN)
+              both_incorrect = sum((FP == 1 & FPk == 1) | 
+                                   (FN == 1 & FNk == 1)),
+              
+              N = sum((TN == 1 & TNk == 1) | (TP == 1 & TPk == 1)) + 
+                  sum((TN == 1 & TNk == 0) | (TP == 1 & TPk == 0)) + 
+                  sum((TN == 0 & TNk == 1) | (TP == 0 & TPk == 1)) + 
+                  sum((FP == 1 & FPk == 1) | (FN == 1 & FNk == 1)),
+              
+              # Precision
+              both_correct_tp = sum(TP == 1 & TPk == 1),
+              ed_correct_tp_edk_incorrect_fp = sum(TP == 1 & FPk == 1),
+              ed_incorrect_fp_edk_correct_tp = sum(FP == 1 & TPk == 1),
+              both_incorrect_fp = sum(FP == 1 & FPk == 1),
+              TP_ed = sum(TP),
+              FP_ed = sum(FP),
+              
+              TP_edk = sum(TPk),
+              FP_edk = sum(FPk),
+              
+              # Recall
+              ed_correct_tp_edk_incorrect_fn = sum(TP == 1 & FNk == 1),
+              ed_incorrect_fn_edk_correct_tp = sum(FN == 1 & TPk == 1),
+              both_incorrect_fn = sum(FN == 1 & FNk == 1),
+              FN_ed = sum(FN),
+              FN_edk = sum(FNk)
+              ) %>% ungroup()
+  
+  calculate_metrics <- function(metrics) {
+    metrics %>%
+      group_by(Class) %>%
+      summarise(
+        Accuracy_ED = ((both_correct + ed_correct_edk_incorrect) / N)*100,
+        Accuracy_EDK = ((both_correct + ed_incorrect_edk_correct) / N)*100,
+        Precision_ED = (TP_ed / (TP_ed + FP_ed))*100,
+        Precision_EDK = (TP_edk / (TP_edk + FP_edk))*100,
+        Recall_ED = (TP_ed / (TP_ed + FN_ed))*100,
+        Recall_EDK = (TP_edk / (TP_edk + FN_edk))*100,
+        
+        F1_ED = ifelse(Precision_ED + Recall_ED == 0, 0,
+                       (2 * Precision_ED * Recall_ED / (Precision_ED + Recall_ED))),
+        F1_EDK = ifelse(Precision_EDK + Recall_EDK == 0, 0,
+                        (2 * Precision_EDK * Recall_EDK / (Precision_EDK + Recall_EDK)))
+      ) 
+  }
+  
+  calculate_metrics_all <- function(metrics) {
+    metrics %>%
+      janitor::adorn_totals('row') %>%
+      filter(Class == 'Total') %>%
+      reframe(
+        Accuracy_ED = ((both_correct + ed_correct_edk_incorrect) / N)*100,
+        Accuracy_EDK = ((both_correct + ed_incorrect_edk_correct) / N)*100,
+        Precision_ED = (TP_ed / (TP_ed + FP_ed))*100,
+        Precision_EDK = (TP_edk / (TP_edk + FP_edk))*100,
+        Recall_ED = (TP_ed / (TP_ed + FN_ed))*100,
+        Recall_EDK = (TP_edk / (TP_edk + FN_edk))*100,
+        
+        F1_ED = ifelse(Precision_ED + Recall_ED == 0, 0,
+                    (2 * Precision_ED * Recall_ED / (Precision_ED + Recall_ED))),
+        F1_EDK = ifelse(Precision_EDK + Recall_EDK == 0, 0,
+                       (2 * Precision_EDK * Recall_EDK / (Precision_EDK + Recall_EDK)))
+      ) 
+  }
+  
+  # Calculate metrics for each dataset
+  class_metrics <- calculate_metrics(class_contingency)
+  class_metrics[is.na(class_metrics)] <- 0
+  all_metrics <- calculate_metrics_all(class_contingency) %>%
+    mutate(Class = 'All') %>% select(Class, everything())
+  all_metrics[is.na(all_metrics)] <- 0
+  
+  metrics <- rbind(all_metrics, class_metrics)
+  
+  
+  
+  ## McNemar Tests
+  ## Accuracy
+  class_accuracy <- list()
+  for(i in unique(class_contingency$Class)) {
     # Create the contingency table for accuracy
-    correct_modelED <- df$ModelED[df$Measure == "TP"] + df$ModelED[df$Measure == "TN"]
-    incorrect_modelED <- df$ModelED[df$Measure == "FP"] + df$ModelED[df$Measure == "FN"]
-    correct_modelEDK <- df$ModelEDK[df$Measure == "TP"] + df$ModelEDK[df$Measure == "TN"]
-    incorrect_modelEDK <- df$ModelEDK[df$Measure == "FP"] + df$ModelEDK[df$Measure == "FN"]
+    df <- subset(class_contingency, Class == i)
+    dft <- class_contingency %>%
+      janitor::adorn_totals('row') %>%
+      filter(Class == 'Total')
     
     # Accuracy contingency table
-    accuracy <- matrix(c(correct_modelED, incorrect_modelED,
-                         correct_modelEDK, incorrect_modelEDK),
-                       nrow = 2, byrow = TRUE,
-                       dimnames = list("Model ED" = c("Correct", "Incorrect"),
-                                       "Model EDK" = c("Correct", "Incorrect"))
-                       )
+    accuracy <- matrix(c(
+      df$both_correct, 
+      df$ed_correct_edk_incorrect, 
+      df$ed_incorrect_edk_correct, 
+      df$both_incorrect
+    ), nrow = 2, byrow = TRUE,
+    dimnames = list("nDK Model" = c("Correct", "Incorrect"),
+                    "iDK Model" = c("Correct", "Incorrect")))
+    
     
     # McNemar test for accuracy
     mcnemar_accuracy <- mcnemar.test(accuracy)
+    results_accuracy <- data.frame(Class = i,
+                          Statistic = mcnemar_accuracy$statistic[[1]],
+                          df = mcnemar_accuracy$parameter[[1]],
+                          p = mcnemar_accuracy$p.value[[1]])
+    
+    accuracyt <- matrix(c(
+      dft$both_correct, 
+      dft$ed_correct_edk_incorrect, 
+      dft$ed_incorrect_edk_correct, 
+      dft$both_incorrect
+    ), nrow = 2, byrow = TRUE,
+    dimnames = list("nDK Model" = c("Correct", "Incorrect"),
+                    "iDK Model" = c("Correct", "Incorrect")))
+    
+    
+    # McNemar test for accuracy
+    mcnemar_accuracyt <- mcnemar.test(accuracyt)
+    results_accuracyt <- data.frame(Class = 'All',
+                                   Statistic = mcnemar_accuracyt$statistic[[1]],
+                                   df = mcnemar_accuracyt$parameter[[1]],
+                                   p = mcnemar_accuracyt$p.value[[1]])
+    
+    results_accuracy_all <- rbind(results_accuracyt, results_accuracy)
+    
+    class_accuracy[[i]] <- results_accuracy_all
+  }
   
-  
-    ## Precision
-    tp_modelED <- df$ModelED[df$Measure == "TP"]
-    fp_modelED <- df$ModelED[df$Measure == "FP"]
-    tp_modelEDK <- df$ModelEDK[df$Measure == "TP"]
-    fp_modelEDK <- df$ModelEDK[df$Measure == "FP"]
-  
+  ## Precision
+  class_precision <- list()
+  for(i in unique(class_contingency$Class)) {
+    df <- subset(class_contingency, Class == i)
+    
     # Precision contingency table
-    precision <- matrix(c(tp_modelED, fp_modelED, tp_modelEDK, fp_modelEDK),
-                        nrow = 2, byrow = TRUE,
-                        dimnames = list("Model ED" = c("TP", "FP"),
-                                        "Model EDK" = c("TP", "FP")))
-  
+    precision <- matrix(c(
+      df$both_correct_tp,
+      df$ed_correct_tp_edk_incorrect_fp,
+      df$ed_incorrect_fp_edk_correct_tp,
+      df$both_incorrect_fp
+    ), nrow = 2, byrow = TRUE,
+    dimnames = list("nDK Model" = c("Correct (TP)", "Incorrect (FP)"),
+                    "iDK Model" = c("Correct (TP)", "Incorrect (FP)")))
+    
     # McNemar test for precision
     mcnemar_precision <- mcnemar.test(precision)
-  
-  
-    # Recall
-    tp_modelED <- df$ModelED[df$Measure == "TP"]
-    fn_modelED <- df$ModelED[df$Measure == "FN"]
-    tp_modelEDK <- df$ModelEDK[df$Measure == "TP"]
-    fn_modelEDK <- df$ModelEDK[df$Measure == "FN"]
+    results_precision <- data.frame(Class = i,
+                          Statistic = mcnemar_precision$statistic[[1]],
+                          df = mcnemar_precision$parameter[[1]],
+                          p = mcnemar_precision$p.value[[1]])
+    dft <- class_contingency %>%
+      janitor::adorn_totals('row') %>%
+      filter(Class == 'Total')
+    precisiont <- matrix(c(
+      dft$both_correct_tp,
+      dft$ed_correct_tp_edk_incorrect_fp,
+      dft$ed_incorrect_fp_edk_correct_tp,
+      dft$both_incorrect_fp
+    ), nrow = 2, byrow = TRUE,
+    dimnames = list("nDK Model" = c("Correct (TP)", "Incorrect (FP)"),
+                    "iDK Model" = c("Correct (TP)", "Incorrect (FP)")))
     
+    # McNemar test for precision
+    mcnemar_precisiont <- mcnemar.test(precisiont)
+    results_precisiont <- data.frame(Class = 'All',
+                                    Statistic = mcnemar_precisiont$statistic[[1]],
+                                    df = mcnemar_precisiont$parameter[[1]],
+                                    p = mcnemar_precisiont$p.value[[1]])
+    results_precision_all <- rbind(results_precisiont, results_precision)
+    
+    class_precision[[i]] <- results_precision_all
+  }
+  
+  class_recall <- list()
+  for(i in unique(class_contingency$Class)) {
+    df <- subset(class_contingency, Class == i)
+    dft <- class_contingency %>%
+      janitor::adorn_totals('row') %>%
+      filter(Class == 'Total')
+   
     # Recall contingency table
-    recall <- matrix(c(tp_modelED, fn_modelED, tp_modelEDK, fn_modelEDK),
-                     nrow = 2, byrow = TRUE,
-                     dimnames = list("Model ED" = c("TP", "FN"),
-                                     "Model EDK" = c("TP", "FN")))
+    recall <- matrix(c(
+      df$both_correct_tp,
+      df$ed_correct_tp_edk_incorrect_fn,
+      df$ed_incorrect_fn_edk_correct_tp,
+      df$both_incorrect_fn
+    ), nrow = 2, byrow = TRUE,
+    dimnames = list("nDK Model" = c("Correct (TP)", "Incorrect (FN)"),
+                    "iDK Model" = c("Correct (TP)", "Incorrect (FN)")))
     
     # Perform the McNemar test for recall
     mcnemar_recall <- mcnemar.test(recall)
+    results_recall <- data.frame(Class = i,
+                          Statistic = mcnemar_recall$statistic[[1]],
+                          df = mcnemar_recall$parameter[[1]],
+                          p = mcnemar_recall$p.value[[1]])
     
-    ## Actual scores
-    scoresED <- metrics_layer_ed %>%
-      summarise(
-        Accuracy = sum(TP + TN) / sum(TP + TN + FP + FN),
-        Precision = sum(TP) / sum(TP + FP),
-        Recall = sum(TP) / sum(TP + FN),
-        F1 = ifelse(Precision + Recall == 0, 0,
-                    2 * Precision * Recall / (Precision + Recall))
-      )
+    recallt <- matrix(c(
+      dft$both_correct_tp,
+      dft$ed_correct_tp_edk_incorrect_fn,
+      dft$ed_incorrect_fn_edk_correct_tp,
+      dft$both_incorrect_fn
+    ), nrow = 2, byrow = TRUE,
+    dimnames = list("nDK Model" = c("Correct (TP)", "Incorrect (FN)"),
+                    "iDK Model" = c("Correct (TP)", "Incorrect (FN)")))
     
-    class_scoresED <- metrics_layer_ed %>%
-      group_by(Class) %>%
-      summarise(
-        Accuracy = sum(TP + TN) / sum(TP + TN + FP + FN),
-        Precision = sum(TP) / sum(TP + FP),
-        Recall = sum(TP) / sum(TP + FN),
-        F1 = ifelse(Precision + Recall == 0, 0,
-                    2 * Precision * Recall / (Precision + Recall))
-      )
+    # Perform the McNemar test for recall
+    mcnemar_recallt <- mcnemar.test(recallt)
+    results_recallt <- data.frame(Class = 'All',
+                                 Statistic = mcnemar_recallt$statistic[[1]],
+                                 df = mcnemar_recallt$parameter[[1]],
+                                 p = mcnemar_recallt$p.value[[1]])
+    results_recall_all <- rbind(results_recallt, results_recall)
     
-    scoresEDK <- metrics_layer_edk %>%
-      summarise(
-        Accuracy = sum(TP + TN) / sum(TP + TN + FP + FN),
-        Precision = sum(TP) / sum(TP + FP),
-        Recall = sum(TP) / sum(TP + FN),
-        F1 = ifelse(Precision + Recall == 0, 0,
-                    2 * Precision * Recall / (Precision + Recall))
-      )
+    class_recall[[i]] <- results_recall_all
+  }
+  
+  
+  class_f1 <- list()
+  for(i in unique(metrics$Class)) {
     
-    class_scoresEDK <- metrics_layer_edk %>%
-      group_by(Class) %>%
-      summarise(
-        Accuracy = sum(TP + TN) / sum(TP + TN + FP + FN),
-        Precision = sum(TP) / sum(TP + FP),
-        Recall = sum(TP) / sum(TP + FN),
-        F1 = ifelse(Precision + Recall == 0, 0,
-                    2 * Precision * Recall / (Precision + Recall))
-      )  
-    
-    ed_results <- rbind(data.frame(scoresED) %>%
-                          mutate(Class = 'All classes') %>%
-                          select(Class, everything()),
-                        data.frame(class_scoresED)) %>%
-      mutate(Layer = 'ED') %>% select(Layer, everything())
-    
-    edk_results <- rbind(data.frame(scoresEDK) %>%
-                           mutate(Class = 'All classes') %>%
-                           select(Class, everything()),
-                         data.frame(class_scoresEDK)) %>%
-      mutate(Layer = 'EDK') %>% select(Layer, everything())
-    Metrics <- rbind(ed_results, edk_results)
-    Comparison <- data.frame(
-      Method = rep(mcnemar_accuracy$method, 3),
-      Metric = c('Accuracy', 'Precision', 'Recall'),
-      Statistic = c(mcnemar_accuracy$statistic, 
-                    mcnemar_precision$statistic,
-                    mcnemar_recall$statistic),
-      DF = rep(mcnemar_accuracy$parameter, 3),
-      PValue = c(mcnemar_accuracy$p.value,
-                 mcnemar_precision$p.value,
-                 mcnemar_recall$p.value)
-      
-    )
-    
-    sheet=createSheet(wb, paste0('Results Data ', i))
-    addDataFrame(accuracy, sheet = sheet, startRow = 1, row.names = FALSE)
-    addDataFrame(precision, sheet = sheet, startRow = 6, row.names = FALSE)
-    addDataFrame(recall, sheet = sheet, startRow = 11, row.names = FALSE)
-    addDataFrame(Comparison, sheet = sheet, startRow = 17, row.names = FALSE)
-    addDataFrame(Metrics, sheet = sheet, startRow = 22, row.names = FALSE)
+    df=metrics
+    f1_scores_modelnDK <- df$F1_ED  
+    f1_scores_modeliDK <- df$F1_EDK
     
     
+    # Paired t-test
+    ttest_results <- t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
     
+    results_f1 <- data.frame(Class = i,
+                          Statistic = ttest_results$statistic[[1]],
+                          df = ttest_results$parameter[[1]],
+                          p = ttest_results$p.value[[1]])
+    
+    
+    class_f1[[i]] <- results_f1
+  }
+  
+  binded_accuracy <- bind_rows(class_accuracy) %>%
+    mutate(Measure = 'Accuracy')
+  binded_precision <- bind_rows(class_precision) %>%
+    mutate(Measure = 'Precision')
+  binded_recall <- bind_rows(class_recall) %>%
+    mutate(Measure = 'Recall')
+  
+  binded_f1 <- bind_rows(class_f1) %>%
+    mutate(Measure = 'F1')
+  class_metrics_bind <- bind_rows(binded_accuracy, binded_precision, 
+                                  binded_recall, binded_f1)
+  
+  
+  return(list('metrics'=class_metrics_bind, 'measures'=metrics))
+  }
+  
+# Create workbook and sheets
+library(openxlsx)
+
+metrics_ed_list <- list(metrics_ed1, metrics_ed2, metrics_ed3, metrics_ed4, metrics_ed5)
+metrics_edk_list <- list(metrics_edk1, metrics_edk2, metrics_edk3, metrics_edk4, metrics_edk5)
+
+metrics_per_dataset <- list()
+measures_per_dataset <- list()
+
+for (i in seq_along(metrics_ed_list)) {
+  results <- metrics_comparison(metrics_ed_list[[i]], metrics_edk_list[[i]])
+  results$metrics$dataset = i
+  results$measures$dataset = i
+  
+  metrics_per_dataset[[i]] <- results$metrics
+  measures_per_dataset[[i]] <- results$measures
+  
 }
 
-wb = createWorkbook()
-for (i in 1:5) {
-  metrics_comparison(get(paste0('metrics_ed', i)), get(paste0('metrics_edk', i)))
-}
+binded_metrics <- bind_rows(metrics_per_dataset)
+binded_metrics <- binded_metrics[!duplicated(binded_metrics), ]
+binded_measures <- bind_rows(measures_per_dataset)
 
-saveWorkbook(wb, "Stage 1 Results.xlsx")
-
-## F1 Scores Dataset 1
-# These were entered manually
-f1_scores_modelnDK <- c(90.35, 87.29, 96.57, 86.34, 87.25, 80.18)  
-f1_scores_modeliDK <- c(92.22, 87.49, 97.94, 82.45, 99.77, 82.24)  
-
-# Paired t-test
-t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
-
-## F1 Scores Dataset 2
-f1_scores_modelnDK <- c(57.82, 0.00, 97.22, 0.00, 0.00, 0.00)  
-f1_scores_modeliDK <- c(95.36, 97.25, 90.87, 98.85, 99.96, 97.12)  
-
-# Paired t-test
-t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
-
-## F1 Scores Dataset 3
-f1_scores_modelnDK <- c(51.93, 0.00, 56.96, 96.27, 0.00, 0.00)  
-f1_scores_modeliDK <- c(99.40, 98.98, 99.41, 98.90, 100.00, 100.00)  
-
-# Paired t-test
-t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
-
-## F1 Scores Dataset 4
-f1_scores_modelnDK <- c(78.25, 60.91, 97.21, 64.13, 52.02, 56.44)  
-f1_scores_modeliDK <- c(98.26, 98.09, 99.95, 93.40, 98.81, 99.17)  
-
-# Paired t-test
-t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
-
-## F1 Scores Dataset 5
-f1_scores_modelnDK <- c(67.72304765, 0.311486048, 97.25683011, 64.39081813,
-                        0.015578751, 25.37097833)
-f1_scores_modeliDK <- c(99.18783934, 98.25858181, 99.99566903, 98.86767423,
-                        97.1166348, 100)  
-# Paired t-test
-t.test(f1_scores_modelnDK, f1_scores_modeliDK, paired = TRUE)
+# Save workbook
+write.xlsx(binded_metrics, "class_level_comparison_results_final.xlsx")
+write.xlsx(binded_measures, "class_level_measures_final.xlsx")
